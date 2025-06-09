@@ -1,0 +1,63 @@
+# Move Zeroes to End of the Array  
+[Leetcode Problem Link](https://leetcode.com/problems/move-zeroes/)
+
+---
+
+## Brute Force Approach
+
+1) Traverse the array and collect all the non-zero numbers into a temporary array.  
+2) Using the size of the temporary array, loop through the original array and replace the elements so that the non-zero numbers come first, without changing their order.  
+3) Fill the remaining positions in the array with zeros at the end.
+
+**Time Complexity:** O(N)  
+**Space Complexity:** O(N)
+
+```
+def moveZeroes(self, nums: List[int]) -> None:
+    """
+    Do not return anything, modify nums in-place instead.
+    """
+    n = len(nums)
+    temp = []
+    for i in nums:
+        if i != 0:
+            temp.append(i)
+
+    temp_size = len(temp)
+
+    for i in range(temp_size):
+        nums[i] = temp[i]
+
+    for j in range(temp_size, n):
+        nums[j] = 0
+```
+
+## Optimal/Better Than Brute Force:
+
+1) Use two pointers: assign j = None because there could be an array where there is no zero. So after finishing the first step, if j is still None, we can skip the second step — no need to do unnecessary work.
+   First, find the first zero in the array by looping with the i pointer and assign it to j (i.e., i = j).
+2 Now use another loop to traverse the array using i from j+1 (i.e., after the zero index) to the end of the array. Whenever you see a non-zero number, swap it with the jth element and increment j, 
+  since we just swapped in a non-zero.
+3) So here, i is used for traversing the array and checking for non-zero values, while j keeps track of the position of the zero (where the next non-zero should go).
+
+Time: O(N)
+Space: O(1)
+
+```
+def moveZeroes(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        j = None
+        for i in range(len(nums)):
+            if nums[i] == 0:
+                j = i
+                break
+        if j == None:
+            return
+    
+        for i in range(j+1,len(nums)):
+            if nums[i] != 0 :
+                nums[j] ,nums[i] = nums[i] ,nums[j]
+                j+=1
+```
