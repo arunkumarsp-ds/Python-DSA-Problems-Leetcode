@@ -8,7 +8,7 @@ if an element in the list occurs more than n/2 times then it is majority element
 """
 
 
-# Built in method (not recommended):
+""" Built in method (not recommended): """
 
 def majorityElement(self, nums: List[int]) -> int:
         n = len(nums)
@@ -50,14 +50,14 @@ Optimal or better :
 2) The logic is:
 
     * If the next element is the same as our candidate, we increase the count.
-
     * If not, we decrease the count because a different element has appeared.
-
+    
     We keep doing this while traversing the array.
 
-3) When the count becomes 0, it means that — so far — the votes for the current candidate have been matched by other elements (either           individually or combined). So it cannot be the majority element as of now, and we pick the current number as the new candidate.
-
-    We continue this process until we finish the loop.
+3) When the count becomes 0, it means that so far the votes for the current candidate have been matched by other elements (either individually or combined). 
+   For now, we will assume this is the complete array. So it cannot be the majority element as of now, and we pick the current number as the new candidate.
+   
+   We continue this process until we finish the loop.
 
 4) At the end, this candidate might be the majority element if it’s guaranteed.
    If not, we verify it by checking whether the candidate appears more than n/2 times. """
