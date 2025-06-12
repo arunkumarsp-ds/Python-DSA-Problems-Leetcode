@@ -39,9 +39,9 @@ def productExceptSelf(self, nums: List[int]) -> List[int]:
    and multiply it with the product of all the numbers to the right of the number, then it gives our answer to the respective index 
    Which is: output[i] = left product * right product
 
-3) To do that, we need to have the left product of i in a left array and the right product of i in a right array.
+3) To do that, we need to have the left product of ith number in a left array and the right product of ith number in a right array.
    But that will take extra space. So, first we will store our left product in the output array itself.
-  Then we will multiply the right product directly into the output array so that we can avoid using extra space.
+   Then we will multiply the right product directly into the output array so that we can avoid using extra space.
 
 4) For that, first we will have a left_product variable. 
    And we know that the leftmost element won't have any left product, which will just be 1.
