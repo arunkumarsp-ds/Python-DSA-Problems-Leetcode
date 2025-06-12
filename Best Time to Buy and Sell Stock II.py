@@ -20,7 +20,7 @@ Total profit is 4 + 3 = 7. """
 
 
 """
-!) We are told that we can buy and sell multiple times, but we can buy the next time only after selling the stock we already bought.
+1) We are told that we can buy and sell multiple times, but we can buy the next time only after selling the stock we already bought.
 
 2) So this becomes very easy — always try to draw the line chart of prices for better understanding.
 
@@ -29,7 +29,7 @@ Total profit is 4 + 3 = 7. """
    * If the next day's price is greater than the current day, then sell it — so we can make the profit.
 
 4) Since we are allowed to buy and sell multiple times, we just keep adding the profits by buying and selling whenever the next day's price is greater than the current day.
-  This way, we will get the maximum profit possible.
+   This way, we will get the maximum profit possible.
 
 5) Run the loop from the first to the (n-1)th index, so that we can compare like:
 prices[i+1] > prices[i] """
