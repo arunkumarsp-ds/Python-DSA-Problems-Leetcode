@@ -1,11 +1,9 @@
-"""
+""" 
 First Missing Positive Number:
+
 nums = [3, 4, -1, 1, 2, 2, 7, 8, 0, 6, 5]
 output: 9
-
-Note if every elements are in the array from 1 to len(nums) that means we need to return next missing positive number which is len(nums)+1
-"""
-
+Note: if every element is in the array from 1 to len(nums), that means we need to return the next missing positive number, which is len(nums)+1  """
 
 """
 simple solution:
@@ -16,7 +14,7 @@ simple solution:
     * We go up to n+1 because the second argument in the range() function is exclusive.
 3) For each number in this range, we check if it is not in the set:
     * The first number not found in the set is the smallest missing positive integer.
-4) If all numbers from 1 to n are present, we return n+1 as the missing number."""
+4) If all numbers from 1 to n are present, we return n+1 as the missing number. """
 
 def firstMissingPositive(self, nums: List[int]) -> int:
         n = len(nums)
@@ -26,6 +24,10 @@ def firstMissingPositive(self, nums: List[int]) -> int:
             if i not in set1:
                 return i
         return n+1
+   
+"""
+Time: O(N)
+Space: O(N) """
 
 """
 Optimal solution 
@@ -49,6 +51,11 @@ def firstMissingPositive(self, nums: List[int]) -> int:
         return n+1
 
 """
+Time: O(N)
+Space: O(1) """
+
+
+"""
 Optimal solution 
 preserves the original elements but still the order of elements will be changed at end as we are modifying the input array 
 """
@@ -65,3 +72,7 @@ def firstMissingPositive(self, nums: List[int]) -> int:
              if nums[i] != i+1:
                   return i+1
         return n+1
+
+"""
+Time: O(N)
+Space: O(1) """
