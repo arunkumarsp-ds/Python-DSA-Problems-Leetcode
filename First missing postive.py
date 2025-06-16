@@ -31,7 +31,7 @@ Space: O(N) """
 
 """
 Optimal solution 1)
-   does not preserve both the original elements and its order at end of the output list as we are modifying the input array 
+   does not preserve both the original elements and their order at the end of the output list as we are modifying the input array 
 """
 """
 🧠 Logic Explanation: firstMissingPositive (Constant Space)
@@ -52,7 +52,7 @@ Optimal solution 1)
 
 🔹 Step 2: Use Index as a Marker
 
-   *	We know if a number like 3 is in the array, we should mark index 2 (i.e., 3 - 1) to indicate presence.
+   *	We know if a number like 3 is in the array, we should mark index 2 into negative to indicate presence.
    *	So we go to nums[abs(nums[i]) - 1] and make it negative.
    *	But there are two things we need to be careful about:
       1.	We must only do this for numbers ≤ n
@@ -63,7 +63,7 @@ Optimal solution 1)
 🔹 Step 3: Find the First Missing
    *	Finally, we loop from index 0 to n-1:
       	If we see a positive number, it means i + 1 is the missing number.
-   *	If all numbers are marked (i.e., negative),
+   *	If all numbers are marked as negative,
          it means 1 to n are present, so the missing number is n + 1.
 
 ✅ Why This Works
