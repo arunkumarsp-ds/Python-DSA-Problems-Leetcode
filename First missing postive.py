@@ -30,8 +30,8 @@ Time: O(N)
 Space: O(N) """
 
 """
-Optimal solution 
-does not preserve both the original elements and its order at end of the output list as we are modifying the input array 
+Optimal solution 1)
+   does not preserve both the original elements and its order at end of the output list as we are modifying the input array 
 """
 """
 🧠 Logic Explanation: firstMissingPositive (Constant Space)
@@ -93,8 +93,8 @@ Space: O(1) """
 
 
 """
-Optimal solution 
-preserves the original elements but still the order of elements will be changed at end as we are modifying the input array 
+Optimal solution 2)
+   preserves the original elements but still the order of elements will be changed at end as we are modifying the input array 
 """
 
 def firstMissingPositive(self, nums: List[int]) -> int:
