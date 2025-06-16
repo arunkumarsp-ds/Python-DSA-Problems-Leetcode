@@ -31,8 +31,45 @@ Space: O(N) """
 
 """
 Optimal solution 
-does not preserve both the original elements and its order at end as we are modifying the input array 
+does not preserve both the original elements and its order at end of the output list as we are modifying the input array 
 """
+"""
+🧠 Logic Explanation: firstMissingPositive (Constant Space)
+   •	We know we need to do it in constant space, so we have to play with the input array.
+   •	At worst, the array can contain numbers from 1 to n, so we cannot rely on an extra array — that would break the space constraint.
+
+✅ Our Goal
+   	* While traversing the array, we want to know which numbers are present and which number is the first missing positive.
+   	* We can take advantage of the fact that the array may contain negative numbers.
+      We’ll use the negative sign as an indicator that a number is present.
+
+🔹 Step 1: Ignore Irrelevant Numbers
+
+   •	We don’t want numbers that are less than or equal to 0 Or greater than n
+   •	So we convert them to n + 1.
+
+   This way, we don't accidentally mark wrong indices in the next step.
+
+🔹 Step 2: Use Index as a Marker
+
+   *	We know if a number like 3 is in the array, we should mark index 2 (i.e., 3 - 1) to indicate presence.
+   *	So we go to nums[abs(nums[i]) - 1] and make it negative.
+   *	But there are two things we need to be careful about:
+      1.	We must only do this for numbers ≤ n
+      2.	We must not flip a number back to positive if it’s already negative
+   * So we multiply it like this: 
+       nums[abs(nums[i]) - 1] = -1 * abs(nums[abs(nums[i]) - 1])
+
+🔹 Step 3: Find the First Missing
+   *	Finally, we loop from index 0 to n-1:
+      	If we see a positive number, it means i + 1 is the missing number.
+   *	If all numbers are marked (i.e., negative),
+         it means 1 to n are present, so the missing number is n + 1.
+
+✅ Why This Works
+   •	We never used any extra space → truly constant space
+   •	We go through the array three times, so it's O(n) time
+   •	We use the input array itself to mark and track the presence of numbers using the negative sign """
 
 def firstMissingPositive(self, nums: List[int]) -> int:
         n = len(nums)
