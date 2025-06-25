@@ -34,14 +34,14 @@ Optimal solution 1)
    does not preserve both the original elements and their order at the end of the output list as we are modifying the input array 
 """
 """
-🧠 Logic Explanation: firstMissingPositive (Constant Space)
+ Logic Explanation: firstMissingPositive (Constant Space)
    •	We know we need to do it in constant space, so we have to play with the input array.
    •	At worst, the array can contain numbers from 1 to n, so we cannot rely on an extra array — that would break the space constraint.
 
-✅ Our Goal
+ Our Goal
    	* While traversing the array, we want to know which numbers are present and which number is the first missing positive.
    	* We can take advantage of the fact that the array may contain negative numbers.
-      We’ll use the negative sign as an indicator that a number is present.
+      We will use the negative sign as an indicator that a number is present.
 
 🔹 Step 1: Ignore Irrelevant Numbers
 
@@ -66,7 +66,7 @@ Optimal solution 1)
    *	If all numbers are marked as negative,
          it means 1 to n are present, so the missing number is n + 1.
 
-✅ Why This Works
+ Why This Works
    •	We never used any extra space → truly constant space
    •	We go through the array three times, so it's O(n) time
    •	We use the input array itself to mark and track the presence of numbers using the negative sign """
