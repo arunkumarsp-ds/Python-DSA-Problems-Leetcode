@@ -52,8 +52,46 @@ def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
                         visited[j] = True
                 output.append(group)
         return output
+"""
+Time: O(n^2 * nlog n) = nested loops and sorting
+# Space: O(n) = output array and visited array   """
 
-# optimal method
+# Optimal method:
+
+"""
+1) Another property of an anagram is that the frequency of the characters will be the same. So the logic is:
+
+2) If we somehow store the frequency of the characters in a word as a key, and keep a list of strings that have the same number of characters as the value corresponding to that key, then we can just extract the values and return those list of anagrams alone.
+
+3) To do that, we need a dictionary — but a regular dictionary will raise an error when the key is not already there. So we use defaultdict(list).
+
+4) defaultdict(list) will automatically create an empty list as the value for a key if that key is not already present in the dictionary.
+So you can directly do .append() on that key without checking whether it exists — it creates the key and the list behind the scenes.
+
+5) Now we need to figure out how we can create the frequency of the characters as a key.
+To do that, we know the key in a dictionary must be immutable, which means we can use a tuple.
+
+6) We also need to know the frequency of each character. So we create a list:
+
+	count = [0]*26
+
+	Because we only have 26 alphabets, and in this problem we have only small letters. 	(Even if not, we can just convert the characters to lowercase.)
+
+	We know the 0th index is to store the frequency of "a". So whenever we see "a", we 	need to increase the 0th index.
+
+	We do it like this:
+
+	count[ord(char) - ord("a")] += 1
+
+	This not only gives 0 for "a" — it also gives the respective index for all characters 	from "a" to "z".
+
+	ord() gives the ASCII value of the character, so don't worry about it much — it will 	work perfectly to calculate the correct index for each character in the alphabet.
+
+7) Finally, we convert the count list into a tuple so that it can be used as a key in the dictionary:
+
+	key = tuple(count)
+
+This way, all anagrams (which will have the same frequency tuple) will be grouped together automatically under that key. At the end, we return just the values of the dictionary."""
 
 from collections import defaultdict
 def groupAnagrams(strs):
@@ -67,3 +105,7 @@ def groupAnagrams(strs):
         anagram_groups[key].append(word) # since we are using the deafultdict(list)
         # it will create the key and append the word to the list if the key is not already there
     return list(anagram_groups.values())
+
+"""
+Time: O(n * m) :  n= no of words in the list ,m = no of characters in the word
+Space: O(n) """
