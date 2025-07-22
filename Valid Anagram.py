@@ -66,3 +66,18 @@ def isAnagram(s,t):
 """
 Time: O(n)
 Space: O(1) → space is constant irrespective of the string size, it is always going to be 26 """
+
+"""
+
+3) alternate method for 2nd method instead of counting the frequency manually using list we can use Counter:
+
+	- eg: if s = "batting" then Counter(s) will result as Counter({'t': 2, 'b': 1, 'a': 1, 'i': 1, 'n': 1, 'g': 1}) """
+
+from collections import Counter
+
+def isAnagram(s, t):
+    return Counter(s) == Counter(t)
+
+"""
+Time: O(n)
+Space: O(n) or O(1) in theory it uses extra space for the dictionaries, but since we only deal with lowercase letters it is still considered constant """
